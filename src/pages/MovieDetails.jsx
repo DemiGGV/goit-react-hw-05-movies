@@ -1,4 +1,4 @@
-import { Loader } from 'components/Loader';
+import { Loader } from 'components/Loader/Loader';
 import React, { Suspense, useEffect, useRef, useState } from 'react';
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import {
@@ -12,9 +12,9 @@ import { fetchGetImgs } from 'utils/FetchEngine';
 
 const MovieDetails = () => {
   const [movieDetailes, setMovieDetailes] = useState({});
-  const first = useRef(true);
   const { id } = useParams();
   const movieID = id;
+  const first = useRef(true);
   const location = useRef(useLocation());
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const MovieDetails = () => {
   return (
     <MovieDetailsSection>
       <Link to={location.current.state.from}>
-        <ButtonBack type="button">Fall back!!!</ButtonBack>
+        <ButtonBack type="button">Go back</ButtonBack>
       </Link>
       <MovieDetailsStyled>
         <MoviePoster

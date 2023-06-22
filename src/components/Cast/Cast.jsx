@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { fetchGetImgs } from 'utils/FetchEngine';
 import { useParams } from 'react-router-dom';
 import { CastList, MoviePoster } from 'styling/MainContainerCSS';
+import { fetchGetImgs } from 'utils/FetchEngine';
 
 const Cast = () => {
   const [cast, setCast] = useState([]);
@@ -45,4 +45,3 @@ const Cast = () => {
 };
 
 export default Cast;
-// actor.name actor.profile_path

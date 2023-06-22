@@ -1,6 +1,6 @@
-import Searchbar from 'components/Searchbar';
 import { useEffect, useState } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
+import Searchbar from 'components/Searchbar/Searchbar';
 import { Message, MoviesStyled } from 'styling/MainContainerCSS';
 import { fetchGetImgs } from 'utils/FetchEngine';
 
@@ -9,7 +9,6 @@ const Movies = () => {
   const location = useLocation();
   const [searchParams] = useSearchParams();
   const querry = searchParams.get('q');
-  console.log(location);
 
   useEffect(() => {
     if (!querry) return;
@@ -17,14 +16,13 @@ const Movies = () => {
       try {
         const { results } = await fetchGetImgs('searchIO', querry);
         setMoviesArr(results);
-        console.log(results);
       } catch (error) {
         console.log(error);
       }
     };
     fetchDetails();
   }, [querry]);
-  console.log(moviesArr.length);
+
   return (
     <div>
       <Searchbar />

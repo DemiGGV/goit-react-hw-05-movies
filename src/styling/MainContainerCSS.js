@@ -29,9 +29,9 @@ export const MenuLink = styled(NavLink)`
   text-decoration: none;
   color: black;
   font-weight: 500;
+  transition: all 0.3s ease-in-out;
   &:hover {
-    color: white;
-    background-color: orangered;
+    color: orangered;
   }
   &.active {
     color: white;
@@ -71,7 +71,7 @@ export const SearchFormButton = styled.button`
   background-repeat: no-repeat;
   background-position: center;
   opacity: 0.6;
-  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s ease-in-out;
   cursor: pointer;
   outline: none;
   &:hover {
@@ -126,6 +126,7 @@ export const ButtonBack = styled.button`
   padding: 8px 16px;
   font-size: 1rem;
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
   box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
     0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
   &:hover {
