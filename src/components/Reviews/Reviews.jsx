@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { ReviewBC, ReviewList, ReviewText } from 'styling/MainContainerCSS';
+import { ReviewBC, ReviewList } from 'styling/MainContainerCSS';
 import { fetchGetImgs } from 'utils/FetchEngine';
 
 const Reviews = () => {
