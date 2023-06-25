@@ -48,6 +48,6 @@ export const fetchGetImgs = async (
     },
   };
   const response = await axios.get(url, options);
-  console.log(response.data);
+  // console.log(response.data);
   return response.data;
 };
