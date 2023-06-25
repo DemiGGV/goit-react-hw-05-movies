@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { ReviewList } from 'styling/MainContainerCSS';
+import { ReviewBC, ReviewList, ReviewText } from 'styling/MainContainerCSS';
 import { fetchGetImgs } from 'utils/FetchEngine';
 
 const Reviews = () => {
@@ -30,7 +30,9 @@ const Reviews = () => {
           return (
             <li key={review.author}>
               <h4>{review.author}</h4>
-              <p>{review.content}</p>
+              <ReviewBC>
+                <p>{review.content}</p>
+              </ReviewBC>
             </li>
           );
         })

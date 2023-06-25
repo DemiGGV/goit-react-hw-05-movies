@@ -137,11 +137,15 @@ export const MovieDetailsStyled = styled.section`
   display: flex;
   gap: 20px;
   padding-bottom: 24px;
-  align-items: center;
+  align-items: flex-start;
 `;
 export const MoviePoster = styled.img`
   border-radius: 10px;
   box-shadow: 0 2px 4px 1px rgba(0, 0, 0, 0.25);
+  margin-bottom: 10px;
+`;
+export const TitleName = styled.h2`
+  font-size: 48px;
 `;
 
 // /*
@@ -155,12 +159,12 @@ export const CastList = styled.ul`
   flex-wrap: wrap;
   justify-content: center;
   list-style-type: none;
-  p {
+  & p {
     text-align: center;
   }
 `;
 // /*
-//  * Стили компонента Cast
+//  * Стили компонента Review
 //  */
 export const ReviewList = styled.ul`
   display: flex;
@@ -170,7 +174,20 @@ export const ReviewList = styled.ul`
   flex-wrap: wrap;
   justify-content: flex-start;
   list-style-type: none;
-  p {
-    text-align: left;
+`;
+
+export const ReviewBC = styled.blockquote`
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  &::before {
+    font-size: 24px;
+    content: '"';
+    color: rgba(0, 0, 0, 0.3);
+  }
+  & p {
+    display: inline;
+    font-style: italic;
   }
 `;

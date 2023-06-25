@@ -11,7 +11,7 @@ export const Searchbar = () => {
   const handleSubmit = evt => {
     evt.preventDefault();
     const form = evt.currentTarget;
-    setSearchParams({ q: form.elements.query.value });
+    setSearchParams({ q: form.elements.query.value.trim() });
     form.reset();
   };
 

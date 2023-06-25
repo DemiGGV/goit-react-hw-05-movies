@@ -7,6 +7,7 @@ import {
   MovieDetailsStyled,
   MoviePoster,
   MoviesStyled,
+  TitleName,
 } from 'styling/MainContainerCSS';
 import { fetchGetImgs } from 'utils/FetchEngine';
 
@@ -44,10 +45,12 @@ const MovieDetails = () => {
           alt={original_title}
         />
         <div>
-          <h2>{original_title}</h2>
+          <TitleName>{original_title}</TitleName>
           <p>User score:{Math.round(vote_average * 10)}%</p>
           <h3>Overview</h3>
-          <p>{overview}</p>
+          <p>
+            <i>{overview}</i>
+          </p>
           <h3>Genres</h3>
           {genres && <p>{genres.map(genre => genre.name).join(', ')}</p>}
         </div>

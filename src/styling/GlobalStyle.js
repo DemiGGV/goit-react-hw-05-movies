@@ -18,6 +18,7 @@ ol {
   padding: 0;
   list-style-type: none;
 }
+
 *,
 *::before,
 *::after {
@@ -42,5 +43,9 @@ img {
   display: block;
   max-width: 100%;
   height: auto;
+}
+blockquote {
+    margin: 0;
+    padding: 0;
 }
 `;

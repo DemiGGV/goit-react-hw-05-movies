@@ -36,7 +36,12 @@ const Cast = () => {
               }
               alt={`foto of ${actor.name}`}
             />
-            <p>{actor.name}</p>
+            <p>
+              <b>{actor.name}</b>
+            </p>
+            <p>
+              <i>{actor.character}</i>
+            </p>
           </li>
         );
       })}
