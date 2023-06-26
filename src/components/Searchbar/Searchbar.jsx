@@ -1,28 +1,33 @@
-import { useSearchParams } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import {
   SearchForm,
-  SearchFormButton,
   SearchFormInput,
   SearchHead,
 } from 'styling/MainContainerCSS';
 
-export const Searchbar = () => {
-  const [, setSearchParams] = useSearchParams();
+export const Searchbar = ({ value, onChange }) => {
   const handleSubmit = evt => {
     evt.preventDefault();
-    const form = evt.currentTarget;
-    setSearchParams({ q: form.elements.query.value.trim() });
-    form.reset();
   };
 
   return (
     <SearchHead>
       <SearchForm onSubmit={handleSubmit}>
-        <SearchFormInput type="text" name="query" />
-        <SearchFormButton type="submit"></SearchFormButton>
+        <SearchFormInput
+          autoFocus="true"
+          type="text"
+          name="query"
+          value={value}
+          onChange={evt => onChange(evt.target.value)}
+        />
       </SearchForm>
     </SearchHead>
   );
 };
 
 export default Searchbar;
+
+Searchbar.propTypes = {
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+};

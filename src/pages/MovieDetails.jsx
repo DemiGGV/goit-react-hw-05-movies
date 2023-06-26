@@ -16,7 +16,7 @@ const MovieDetails = () => {
   const { id } = useParams();
   const movieID = id;
   const first = useRef(true);
-  const location = useRef(useLocation());
+  const location = useLocation();
 
   useEffect(() => {
     if (!first.current) return;
@@ -36,12 +36,16 @@ const MovieDetails = () => {
     movieDetailes;
   return (
     <MovieDetailsSection>
-      <Link to={location.current.state.from}>
+      <Link to={location.state?.from ?? '/'}>
         <ButtonBack type="button">Go back</ButtonBack>
       </Link>
       <MovieDetailsStyled>
         <MoviePoster
-          src={`https://image.tmdb.org/t/p/w300${poster_path}`}
+          src={
+            poster_path
+              ? `https://image.tmdb.org/t/p/w300${poster_path}`
+              : 'https://fakeimg.pl/300x450?text=No%20Photo'
+          }
           alt={original_title}
         />
         <div>
@@ -57,10 +61,14 @@ const MovieDetails = () => {
       </MovieDetailsStyled>
       <MoviesStyled>
         <li>
-          <Link to="cast">Cast:</Link>
+          <Link to="cast" state={{ from: location.state.from }}>
+            Cast:
+          </Link>
         </li>
         <li>
-          <Link to="reviews">User reviews:</Link>
+          <Link to="reviews" state={{ from: location.state.from }}>
+            User reviews:
+          </Link>
         </li>
       </MoviesStyled>
       <Suspense fallback={<Loader />}>

@@ -61,23 +61,6 @@ export const SearchForm = styled.form`
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
     0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 `;
-export const SearchFormButton = styled.button`
-  display: inline-block;
-  width: 48px;
-  height: 48px;
-  border: 0;
-  background-image: url('https://images.freeimages.com/fic/images/icons/989/ivista_2/256/search.png');
-  background-size: 40%;
-  background-repeat: no-repeat;
-  background-position: center;
-  opacity: 0.6;
-  transition: all 0.3s ease-in-out;
-  cursor: pointer;
-  outline: none;
-  &:hover {
-    opacity: 1;
-  }
-`;
 export const SearchFormInput = styled.input`
   display: inline-block;
   width: 100%;
@@ -85,10 +68,14 @@ export const SearchFormInput = styled.input`
   font-size: 20px;
   border: none;
   outline: none;
-  padding: 0 20px;
+  padding: 10px 20px;
   &::placeholder {
     font: inherit;
     font-size: 20px;
+  }
+  &:hover,
+  &:focus {
+    background-color: rgb(0, 0, 0, 0.1);
   }
 `;
 
@@ -155,12 +142,16 @@ export const CastList = styled.ul`
   display: flex;
   gap: 20px;
   padding-bottom: 24px;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: wrap;
   justify-content: center;
   list-style-type: none;
+  & li {
+    max-width: 200px;
+  }
   & p {
     text-align: center;
+    word-wrap: break-word;
   }
 `;
 // /*

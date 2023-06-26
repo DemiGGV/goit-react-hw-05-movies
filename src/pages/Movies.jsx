@@ -7,8 +7,8 @@ import { fetchGetImgs } from 'utils/FetchEngine';
 const Movies = () => {
   const [moviesArr, setMoviesArr] = useState([]);
   const location = useLocation();
-  const [searchParams] = useSearchParams();
-  const querry = searchParams.get('q');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const querry = searchParams.get('q') ?? '';
 
   useEffect(() => {
     if (!querry) return;
@@ -23,9 +23,14 @@ const Movies = () => {
     fetchDetails();
   }, [querry]);
 
+  const updateQueryString = q => {
+    const nextQ = q !== '' ? { q } : {};
+    setSearchParams(nextQ);
+  };
+
   return (
     <div>
-      <Searchbar />
+      <Searchbar value={querry} onChange={updateQueryString} />
       {!!moviesArr.length ? (
         <MoviesStyled>
           {moviesArr.map(movie => (
