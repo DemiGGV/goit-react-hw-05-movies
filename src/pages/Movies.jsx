@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import Searchbar from 'components/Searchbar/Searchbar';
 import { Message, MoviesStyled } from 'styling/MainContainerCSS';
@@ -8,29 +8,48 @@ const Movies = () => {
   const [moviesArr, setMoviesArr] = useState([]);
   const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
-  const querry = searchParams.get('q') ?? '';
+  // const query = searchParams.get('query') ?? '';
+  // const year = searchParams.get('year') ?? '';
+  const params = useMemo(
+    () => Object.fromEntries([...searchParams]),
+    [searchParams]
+  );
 
   useEffect(() => {
-    if (!querry) return;
+    if (!params.query) return;
     const fetchDetails = async () => {
       try {
-        const { results } = await fetchGetImgs('searchIO', querry);
+        const { results } = await fetchGetImgs(
+          'searchIO',
+          params.query,
+          params.year
+        );
         setMoviesArr(results);
       } catch (error) {
         console.log(error);
       }
     };
     fetchDetails();
-  }, [querry]);
+  }, [params]);
 
-  const updateQueryString = q => {
-    const nextQ = q !== '' ? { q } : {};
-    setSearchParams(nextQ);
+  const updateQueryString = (parameter, value) => {
+    if (value === '') {
+      if (!delete params[parameter]) {
+        console.log('Error delete');
+      }
+    } else {
+      params[parameter] = value;
+    }
+    setSearchParams(params);
   };
 
   return (
     <div>
-      <Searchbar value={querry} onChange={updateQueryString} />
+      <Searchbar
+        value={params.query ?? ''}
+        value1={params.year ?? '1980'}
+        onChange={updateQueryString}
+      />
       {!!moviesArr.length ? (
         <MoviesStyled>
           {moviesArr.map(movie => (
@@ -41,7 +60,7 @@ const Movies = () => {
             </li>
           ))}
         </MoviesStyled>
-      ) : !!querry ? (
+      ) : !!params.query ? (
         <Message>There no movies on your query!</Message>
       ) : (
         <Message>Input your query...</Message>

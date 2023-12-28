@@ -13,7 +13,7 @@ const Reviews = () => {
     if (!first.current) return;
     const fetchDetails = async () => {
       try {
-        const response = await fetchGetImgs('reviewsIO', '', movieID);
+        const response = await fetchGetImgs('reviewsIO', '', '', movieID);
         setReviews(response.results);
       } catch (error) {
         console.log(error);

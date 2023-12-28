@@ -53,9 +53,10 @@ export const SearchHead = styled.header`
 export const SearchForm = styled.form`
   display: flex;
   align-items: center;
+  gap: 2px;
   width: 100%;
   max-width: 600px;
-  background-color: #fff;
+  background-color: #eee;
   border-radius: 3px;
   overflow: hidden;
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
@@ -64,6 +65,24 @@ export const SearchForm = styled.form`
 export const SearchFormInput = styled.input`
   display: inline-block;
   width: 100%;
+  font: inherit;
+  font-size: 20px;
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  &::placeholder {
+    font: inherit;
+    font-size: 20px;
+  }
+  &:hover,
+  &:focus {
+    background-color: rgb(0, 0, 0, 0.1);
+  }
+`;
+export const SearchFormYearInput = styled.input`
+  text-align: center;
+  display: inline-block;
+  width: 30%;
   font: inherit;
   font-size: 20px;
   border: none;

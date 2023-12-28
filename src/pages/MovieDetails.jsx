@@ -22,7 +22,7 @@ const MovieDetails = () => {
     if (!first.current) return;
     const fetchDetails = async () => {
       try {
-        const response = await fetchGetImgs('detailsIO', '', movieID);
+        const response = await fetchGetImgs('detailsIO', '', '', movieID);
         setMovieDetailes(response);
       } catch (error) {
         console.log(error);
@@ -32,8 +32,14 @@ const MovieDetails = () => {
     first.current = false;
   }, [first, movieID]);
 
-  const { poster_path, original_title, vote_average, overview, genres } =
-    movieDetailes;
+  const {
+    poster_path,
+    original_title,
+    release_date,
+    vote_average,
+    overview,
+    genres,
+  } = movieDetailes;
   return (
     <MovieDetailsSection>
       <Link to={location.state?.from ?? '/'}>
@@ -50,6 +56,7 @@ const MovieDetails = () => {
         />
         <div>
           <TitleName>{original_title}</TitleName>
+          <p>{`Release date: ${release_date}`}</p>
           <p>{`User score: ${Math.round(vote_average * 10)}%`}</p>
           <h3>Overview</h3>
           <p>

@@ -3,6 +3,7 @@ import axios from 'axios';
 export const fetchGetImgs = async (
   operation,
   query = '',
+  year = '',
   movieID = 0,
   page = 1
 ) => {
@@ -17,6 +18,7 @@ export const fetchGetImgs = async (
       paramString = '/search/movie';
       params = {
         query: query,
+        primary_release_year: year,
         include_adult: 'false',
         language: 'en-US',
         page: page,
@@ -48,6 +50,5 @@ export const fetchGetImgs = async (
     },
   };
   const response = await axios.get(url, options);
-  // console.log(response.data);
   return response.data;
 };

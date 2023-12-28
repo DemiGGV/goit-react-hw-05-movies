@@ -13,7 +13,7 @@ const Cast = () => {
     if (!first.current) return;
     const fetchDetails = async () => {
       try {
-        const response = await fetchGetImgs('castIO', '', movieID);
+        const response = await fetchGetImgs('castIO', '', '', movieID);
         setCast(response.cast);
       } catch (error) {
         console.log(error);
